@@ -17,7 +17,6 @@ public class ItemValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         Item item = (Item) target;
-
         if (!StringUtils.hasText(item.getItemName())) {
             errors.rejectValue("itemName", "required");
         }
