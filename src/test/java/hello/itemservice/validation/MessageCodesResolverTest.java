@@ -13,6 +13,7 @@ public class MessageCodesResolverTest {
     @Test
     void messageCodesResolverObject() {
         String[] messageCodes = codesResolver.resolveMessageCodes("required", "item");
+        //항상 에러코드를 찾을때 디테일 한 것 부터 찾는다.
         assertThat(messageCodes).containsExactly("required.item", "required");
     }
 
