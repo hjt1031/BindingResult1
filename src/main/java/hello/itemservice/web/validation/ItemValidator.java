@@ -16,6 +16,8 @@ public class ItemValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
+
+
         Item item = (Item) target;
         if (!StringUtils.hasText(item.getItemName())) {
             errors.rejectValue("itemName", "required");
@@ -27,12 +29,6 @@ public class ItemValidator implements Validator {
             errors.rejectValue("quantity", "max", new Object[]{9999}, null);
         }
 
-        //특정 필드가 아닌 복합 룰 검증
-        if (item.getPrice() != null && item.getQuantity() != null) {
-            int resultPrice = item.getPrice() * item.getQuantity();
-            if (resultPrice < 10000) {
-                errors.reject("totalPriceMin", new Object[]{10000, resultPrice}, null);
-            }
-        }
+
     }
 }
